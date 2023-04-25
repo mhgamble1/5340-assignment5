@@ -52,5 +52,7 @@ struct Art: View {
         }
       }
     }
+    .navigationBarTitle("", displayMode: .inline)
+
   }
 }

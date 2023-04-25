@@ -30,3 +30,12 @@ struct ArtModel: Codable, Identifiable {
   let credit_line: String?
   let publication_history: String?
 }
+
+struct Photograph: Codable, Identifiable {
+  let id: String
+  let author: String
+  let width: Int
+  let height: Int
+  let url: String
+  let download_url: String
+}
