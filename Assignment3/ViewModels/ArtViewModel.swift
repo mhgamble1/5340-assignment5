@@ -9,7 +9,7 @@ import Foundation
 
 class ArtViewModel: ObservableObject {
     @Published var art = [ArtModel]()
-    private let url = "https://api.artic.edu/api/v1/artworks?limit=20"
+    private let url = "https://api.artic.edu/api/v1/artworks?limit=20&fields=id,title,image_id,artist_display,date_display,medium_display,dimensions,place_of_origin,credit_line,publication_history,thumbnail"
 
     @MainActor
     func getArt() async {
@@ -21,5 +21,4 @@ class ArtViewModel: ObservableObject {
             print(error)
         }
     }
-
 }

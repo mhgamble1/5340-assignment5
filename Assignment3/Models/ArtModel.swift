@@ -24,6 +24,9 @@ struct ArtModel: Codable, Identifiable {
     let image_id: String?
     let artist_display: String
     let date_display: String
-    let medium_display: String
-    let publication_history: String?   
+    let medium_display: String?
+    let dimensions: String?
+    let place_of_origin: String?
+    let credit_line: String?
+    let publication_history: String?
 }
