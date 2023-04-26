@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct Photographs: View {
-  @State private var photographs: [Photograph] = []
+  @StateObject var photographsViewModel = PhotographsViewModel()
 
   var body: some View {
     NavigationView {
       List {
-        ForEach(photographs) { photograph in
+        ForEach(photographsViewModel.photographs) { photograph in
           NavigationLink(destination: PhotographDetail(photograph: photograph)) {
             VStack(alignment: .leading) {
               AsyncImage(
@@ -42,26 +42,12 @@ struct Photographs: View {
       }
       .listStyle(.grouped)
       .navigationTitle("Photographs")
-      .onAppear(perform: loadPhotographs)
-    }
-    .navigationBarTitle("", displayMode: .inline)
-  }
-
-  func loadPhotographs() {
-    guard let url = URL(string: "https://picsum.photos/v2/list?page=2&limit=100") else {
-      print("Invalid URL")
-      return
-    }
-    URLSession.shared.dataTask(with: url) { data, response, error in
-      if let data = data {
-        if let decodedPhotographs = try? JSONDecoder().decode([Photograph].self, from: data) {
-          DispatchQueue.main.async {
-            self.photographs = decodedPhotographs
-          }
-          return
+      .onAppear {
+        Task {
+          await photographsViewModel.getPhotographs()
         }
       }
-      print("Fetch failed: \(error?.localizedDescription ?? "Unknown error")")
-    }.resume()
+    }
+    .navigationBarTitle("", displayMode: .inline)
   }
 }
