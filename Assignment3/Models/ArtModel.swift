@@ -39,3 +39,23 @@ struct Photograph: Codable, Identifiable {
   let url: String
   let download_url: String
 }
+
+struct Book: Codable, Identifiable {
+  let id: Int
+  let title: String
+  let subjects: [String]
+  let authors: [Person]
+  let translators: [Person]
+  let bookshelves: [String]
+  let languages: [String]
+  let copyright: Bool?
+  let media_type: String
+  let formats: [String: String]
+  let download_count: Int
+}
+
+struct Person: Codable {
+  let birth_year: Int?
+  let death_year: Int?
+  let name: String
+}
