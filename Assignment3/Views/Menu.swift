@@ -18,13 +18,12 @@ struct Menu: View {
           .foregroundColor(Color("Text"))
 
         Text(
-          "Welcome to our Multimedia viewing app! Here you can explore various art pieces from the Art Institute of Chicago, discover a selection of classic books from Project Gutenberg, and browse a collection of photographs, and . Tap on any of the buttons below to start your journey."
+          "Welcome to the Multimedia viewing app! Here you can explore various art pieces from the Art Institute of Chicago, discover a selection of classic books from Project Gutenberg, and browse a collection of photographs. Tap on any of the buttons below to start your journey."
         )
         .font(.body)
         .multilineTextAlignment(.center)
         .padding()
         .foregroundColor(Color("Text"))
-        
 
         NavigationLink(destination: Art()) {
           Text("Art")
